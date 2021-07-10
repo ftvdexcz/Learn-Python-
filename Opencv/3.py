@@ -12,7 +12,7 @@ while True:
 	# frame represent an image, 
 	ret, frame = cap.read()
 
-	# chia ảnh làm 4 góc 
+	# chia ảnh làm 4 góc (việc chỉnh sửa frame sẽ ảnh hưởng đến video)
 	image = np.zeros_like(frame, dtype=np.uint8)
 	smaller_frame = cv2.resize(frame, (0,0), fx=0.5, fy=0.5)
 	image[:height//2, :width//2] = smaller_frame
@@ -21,7 +21,6 @@ while True:
 	image[height//2:, width//2:] = smaller_frame
 
 	cv2.imshow('Video test', image)
-
 	# Press 'q' to quit 
 	if cv2.waitKey(1) == ord('q'):
 		break
